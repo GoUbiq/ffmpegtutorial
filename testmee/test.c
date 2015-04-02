@@ -7,6 +7,9 @@
 #include <stdint.h>
 #include <unistd.h>
 
+/*
+ compile using gcc -g -o stream test.c -lavformat -lavutil -lavcodec -lavdevice -lswscale
+ */
 // void show_av_device() {
 
 //    inFmt->get_device_list(inFmtCtx, device_list);
@@ -14,6 +17,16 @@
 //    //avformat_open_input(&inFmtCtx,"video=Capture screen 0",inFmt,&inOptions);
 //    printf("===============================\n");
 // }
+
+void AVFAIL (int code, const char *what) {
+    char msg[500];
+    av_strerror(code, msg, sizeof(msg));
+    fprintf(stderr, "failed: %s\nerror: %s\n", what, msg);
+    exit(2);
+}
+
+#define AVCHECK(f) do { int e = (f); if (e < 0) AVFAIL(e, #f); } while (0)
+#define AVCHECKPTR(p,f) do { p = (f); if (!p) AVFAIL(AVERROR_UNKNOWN, #f); } while (0)
 
 void registerLibs() {
     av_register_all();
@@ -33,7 +46,7 @@ int main(int argc, char *argv[]) {
     AVInputFormat     *inFmt = NULL;
     AVFrame           *inFrame = NULL;
     AVDictionary      *inOptions = NULL;
-    const char *streamURL = "http://localhost:8090/test.flv";
+    const char *streamURL = "test.flv";
     const char *name = "avfoundation";
     
 //    AVFrame           *inFrameYUV = NULL;
@@ -133,10 +146,10 @@ int main(int argc, char *argv[]) {
         }
     }
     
-    if (avio_open(&outFmtCtx->pb, outFmtCtx->filename, AVIO_FLAG_READ_WRITE ) < 0) {
+    if (avio_open(&outFmtCtx->pb, outFmtCtx->filename, AVIO_FLAG_WRITE ) < 0) {
         perror("url_fopen failed");
     }
-    
+    //avio_a
     avio_open_dyn_buf(&outFmtCtx->pb);
     ret = avformat_write_header(outFmtCtx, NULL);
     if (ret != 0) {
@@ -162,7 +175,7 @@ int main(int argc, char *argv[]) {
             if(frameFinished) {
                 outFrameYUV = av_frame_alloc();
                 
-                uint8_t *buffer = (uint8_t *)av_malloc(numBytes*sizeof(uint8_t));
+                uint8_t *buffer = (uint8_t *)av_malloc(numBytes);
                 
                 int ret = avpicture_fill((AVPicture *)outFrameYUV, buffer, PIX_FMT_YUV420P,
                                          inCodecCtx->width, inCodecCtx->height);
@@ -188,7 +201,7 @@ int main(int argc, char *argv[]) {
 
                 outFrameYUV->pts = frame_count;
                 
-                ret = avcodec_encode_video2(outFmtCtx->streams[0]->codec, &pkt, outFrameYUV, &got_output);
+                ret = avcodec_encode_video2(outCodecCtx, &pkt, outFrameYUV, &got_output);
                 if (ret < 0) {
                     fprintf(stderr, "Error encoding video frame: %s\n", av_err2str(ret));
                     return -1;
@@ -203,6 +216,7 @@ int main(int argc, char *argv[]) {
                         pkt.pts = av_rescale_q(pkt.pts, stream->codec->time_base, stream->time_base);
                     if(pkt.dts != AV_NOPTS_VALUE)
                         pkt.dts = av_rescale_q(pkt.dts, stream->codec->time_base, stream->time_base);
+                    
                     if(avio_open_dyn_buf(&outFmtCtx->pb)!= 0) {
                         printf("ERROR: Unable to open dynamic buffer\n");
                     }
@@ -223,7 +237,9 @@ int main(int argc, char *argv[]) {
                 frame_count++;
                 
                 av_free_packet(&pkt);
-                av_free(outFrameYUV);
+                av_frame_unref(outFrameYUV);
+                av_frame_unref(inFrame);
+                av_free(buffer);
                 
             }
         }
@@ -246,7 +262,7 @@ int main(int argc, char *argv[]) {
     avformat_free_context(outFmtCtx);
     
     // Free the YUV frame populated by the decoder
-    av_free(inFrame);
+    av_frame_free(&inFrame);
     
     // Close the video codec (decoder)
     avcodec_close(inCodecCtx);

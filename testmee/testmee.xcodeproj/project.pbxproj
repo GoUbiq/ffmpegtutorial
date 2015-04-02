@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8ABF31711AC8F04B00D483DD /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 8ABF31701AC8F04B00D483DD /* test.c */; };
 		8ACA39481ABB5EF400EE8A4F /* libavcodec.56.28.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACA39381ABB4FCD00EE8A4F /* libavcodec.56.28.100.dylib */; };
 		8ACA39491ABB5EF400EE8A4F /* libavfilter.5.12.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACA39391ABB4FCD00EE8A4F /* libavfilter.5.12.100.dylib */; };
 		8ACA394A1ABB5EF400EE8A4F /* libavdevice.56.4.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACA393A1ABB4FCD00EE8A4F /* libavdevice.56.4.100.dylib */; };
@@ -15,7 +16,6 @@
 		8ACA394D1ABB5EF400EE8A4F /* libswscale.3.1.101.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACA393D1ABB4FCD00EE8A4F /* libswscale.3.1.101.dylib */; };
 		8ACA394E1ABB5EF400EE8A4F /* libavfilter.5.11.102.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACA393E1ABB4FCD00EE8A4F /* libavfilter.5.11.102.dylib */; };
 		8ACA39501ABB5EF400EE8A4F /* libavcodec.56.26.100.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACA394F1ABB5EF400EE8A4F /* libavcodec.56.26.100.dylib */; };
-		8ACF1D4D1AB767540051802D /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 8ACF1D4C1AB767540051802D /* test.c */; settings = {COMPILER_FLAGS = "-lavcodec -lavformat -lavutil -lswscale -lavdevice"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8ABF31701AC8F04B00D483DD /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = SOURCE_ROOT; };
 		8ACA39381ABB4FCD00EE8A4F /* libavcodec.56.28.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.56.28.100.dylib; path = ../../../modules/libavcodec.56.28.100.dylib; sourceTree = "<group>"; };
 		8ACA39391ABB4FCD00EE8A4F /* libavfilter.5.12.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavfilter.5.12.100.dylib; path = ../../../modules/libavfilter.5.12.100.dylib; sourceTree = "<group>"; };
 		8ACA393A1ABB4FCD00EE8A4F /* libavdevice.56.4.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.56.4.100.dylib; path = ../../../modules/libavdevice.56.4.100.dylib; sourceTree = "<group>"; };
@@ -40,22 +41,6 @@
 		8ACA393E1ABB4FCD00EE8A4F /* libavfilter.5.11.102.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavfilter.5.11.102.dylib; path = ../../../modules/libavfilter.5.11.102.dylib; sourceTree = "<group>"; };
 		8ACA394F1ABB5EF400EE8A4F /* libavcodec.56.26.100.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.56.26.100.dylib; path = ../../../modules/libavcodec.56.26.100.dylib; sourceTree = "<group>"; };
 		8ACF1D421AB7673F0051802D /* testmee */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testmee; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ACF1D4C1AB767540051802D /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = test.c; path = ../../test.c; sourceTree = "<group>"; };
-		8ADB4AF81ABB73A500F14908 /* avio_reading.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = avio_reading.c; path = ../../../../work/FFmpeg/doc/examples/avio_reading.c; sourceTree = "<group>"; };
-		8ADB4AF91ABB73A500F14908 /* decoding_encoding.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = decoding_encoding.c; path = ../../../../work/FFmpeg/doc/examples/decoding_encoding.c; sourceTree = "<group>"; };
-		8ADB4AFA1ABB73A500F14908 /* demuxing_decoding.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = demuxing_decoding.c; path = ../../../../work/FFmpeg/doc/examples/demuxing_decoding.c; sourceTree = "<group>"; };
-		8ADB4AFB1ABB73A500F14908 /* extract_mvs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = extract_mvs.c; path = ../../../../work/FFmpeg/doc/examples/extract_mvs.c; sourceTree = "<group>"; };
-		8ADB4AFC1ABB73A500F14908 /* filter_audio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = filter_audio.c; path = ../../../../work/FFmpeg/doc/examples/filter_audio.c; sourceTree = "<group>"; };
-		8ADB4AFD1ABB73A500F14908 /* filtering_audio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = filtering_audio.c; path = ../../../../work/FFmpeg/doc/examples/filtering_audio.c; sourceTree = "<group>"; };
-		8ADB4AFE1ABB73A500F14908 /* filtering_video.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = filtering_video.c; path = ../../../../work/FFmpeg/doc/examples/filtering_video.c; sourceTree = "<group>"; };
-		8ADB4AFF1ABB73A500F14908 /* metadata.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = metadata.c; path = ../../../../work/FFmpeg/doc/examples/metadata.c; sourceTree = "<group>"; };
-		8ADB4B001ABB73A500F14908 /* muxing.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = muxing.c; path = ../../../../work/FFmpeg/doc/examples/muxing.c; sourceTree = "<group>"; };
-		8ADB4B011ABB73A500F14908 /* qsvdec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = qsvdec.c; path = ../../../../work/FFmpeg/doc/examples/qsvdec.c; sourceTree = "<group>"; };
-		8ADB4B021ABB73A500F14908 /* remuxing.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = remuxing.c; path = ../../../../work/FFmpeg/doc/examples/remuxing.c; sourceTree = "<group>"; };
-		8ADB4B031ABB73A500F14908 /* resampling_audio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = resampling_audio.c; path = ../../../../work/FFmpeg/doc/examples/resampling_audio.c; sourceTree = "<group>"; };
-		8ADB4B041ABB73A500F14908 /* scaling_video.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = scaling_video.c; path = ../../../../work/FFmpeg/doc/examples/scaling_video.c; sourceTree = "<group>"; };
-		8ADB4B051ABB73A500F14908 /* transcode_aac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = transcode_aac.c; path = ../../../../work/FFmpeg/doc/examples/transcode_aac.c; sourceTree = "<group>"; };
-		8ADB4B061ABB73A500F14908 /* transcoding.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = transcoding.c; path = ../../../../work/FFmpeg/doc/examples/transcoding.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,22 +89,7 @@
 		8ACF1D441AB7673F0051802D /* testmee */ = {
 			isa = PBXGroup;
 			children = (
-				8ACF1D4C1AB767540051802D /* test.c */,
-				8ADB4AF81ABB73A500F14908 /* avio_reading.c */,
-				8ADB4AF91ABB73A500F14908 /* decoding_encoding.c */,
-				8ADB4AFA1ABB73A500F14908 /* demuxing_decoding.c */,
-				8ADB4AFB1ABB73A500F14908 /* extract_mvs.c */,
-				8ADB4AFC1ABB73A500F14908 /* filter_audio.c */,
-				8ADB4AFD1ABB73A500F14908 /* filtering_audio.c */,
-				8ADB4AFE1ABB73A500F14908 /* filtering_video.c */,
-				8ADB4AFF1ABB73A500F14908 /* metadata.c */,
-				8ADB4B001ABB73A500F14908 /* muxing.c */,
-				8ADB4B011ABB73A500F14908 /* qsvdec.c */,
-				8ADB4B021ABB73A500F14908 /* remuxing.c */,
-				8ADB4B031ABB73A500F14908 /* resampling_audio.c */,
-				8ADB4B041ABB73A500F14908 /* scaling_video.c */,
-				8ADB4B051ABB73A500F14908 /* transcode_aac.c */,
-				8ADB4B061ABB73A500F14908 /* transcoding.c */,
+				8ABF31701AC8F04B00D483DD /* test.c */,
 			);
 			path = testmee;
 			sourceTree = "<group>";
@@ -180,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ACF1D4D1AB767540051802D /* test.c in Sources */,
+				8ABF31711AC8F04B00D483DD /* test.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
