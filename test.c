@@ -188,7 +188,7 @@ int main(int argc, char *argv[]) {
 
                 outFrameYUV->pts = frame_count;
                 
-                ret = avcodec_encode_video2(outFmtCtx->streams[0]->codec, &pkt, outFrameYUV, &got_output);
+                ret = avcodec_encode_video2(outCodecCtx, &pkt, outFrameYUV, &got_output);
                 if (ret < 0) {
                     fprintf(stderr, "Error encoding video frame: %s\n", av_err2str(ret));
                     return -1;
@@ -223,6 +223,7 @@ int main(int argc, char *argv[]) {
                 frame_count++;
                 
                 av_free_packet(&pkt);
+                av_free(&buffer);
                 av_free(outFrameYUV);
                 
             }
